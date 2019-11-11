@@ -36,50 +36,20 @@ document.addEventListener('DOMContentLoaded', function(){
 
                     let cellNodes = tabla.getElementsByTagName("td");
 
-                    //let patt = /^.*DEF.*$/i;
-
-                    let matchesList = [];
                     let founded = "";
                     for (let i = 0; i<cellNodes.length;i++){
                         let currentData = cellNodes[i].textContent.toString();
 
                         if (currentData.includes(workerstring)) {
-                            //matchesList.push({worker:currentData,extension:cellNodes[i+1].firstChild.textContent});
-                            //founded = cellNodes[i+1].textContent;
-                            founded += "Nombre: "+currentData+", extension: "+cellNodes[i+1].firstChild.textContent+"\n";
-                            //break;
+                            founded += "[Nombre: "+currentData+", extension: "+cellNodes[i+1].textContent+"]\n";//firstChild
                         }
-                    }
-
-                    /*
-                    let founded = null;
-
-                    for (let i = 0; i<cellNodes.length;i++){
-                        let currentData = cellNodes[i].firstChild.textContent;
-
-                        if (workerstring == currentData) {
-                            founded = cellNodes[i+1].firstChild.textContent;
-                            break;
-                        }
-                    }
-
-                    if(founded){
-                        fillTextArea(founded);
-                    }else{
-                        fillTextArea("No encontrado");
-                    }
-                    */
-                    
+                    }         
                     
                     if(founded){
                         fillTextArea(founded);
                     }else{
                         fillTextArea("No coincide!");
                     }
-                    
-                    chrome.tabs.query({currentWindow:true,active:true}, function(tabs){
-                        chrome.tabs.sendMessage(tabs[0].id,{type:"imprimir",payload:founded});
-                    });
 
                 })
                 .catch(function(error) {

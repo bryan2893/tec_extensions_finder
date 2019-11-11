@@ -1,5 +1,5 @@
 body{
-    width: 300px;
+    width: 400px;
     height:300px;
     color: white;
     background-color: transparent;
@@ -64,6 +64,6 @@ p{
 
 textarea{
     height: 70px;
-    width: 100%;
+    width: 98%;
     text-align: left;
 }
